@@ -1,0 +1,121 @@
+:root {
+  --bg: #f6f4ef;
+  --card: #ffffff;
+  --line: #e3dfd6;
+  --text: #2c2c2a;
+  --muted: #7a7872;
+  --accent: #3c5a99;
+  --accent-soft: #eaf0fa;
+  --danger: #c0392b;
+  --danger-soft: #fcebeb;
+  --ok: #3b6d11;
+  --ok-soft: #eaf3de;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.wrap { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+}
+
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 17px; margin: 28px 0 12px; }
+.sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+
+.row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; }
+.field { display: block; }
+.lbl { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.count { font-variant-numeric: tabular-nums; }
+.count.over { color: var(--danger); }
+
+input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 16px;
+  font-family: inherit;
+  background: #fff;
+}
+input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+.err { color: var(--danger); font-size: 13px; min-height: 20px; margin: 4px 0 8px; }
+.err.center { text-align: center; }
+
+button {
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 10px;
+  height: 48px;
+  padding: 0 18px;
+  cursor: pointer;
+}
+.btn-primary { width: 100%; border: none; background: var(--accent); color: #fff; margin-top: 6px; }
+.btn-primary:disabled { opacity: 0.6; cursor: default; }
+.btn-ghost { background: #fff; border: 1px solid var(--line); color: var(--text); }
+.btn-danger { background: var(--danger); border: none; color: #fff; }
+#againBtn { width: 100%; margin-top: 20px; }
+
+.prog { margin: 6px 0 10px; }
+.prog-track { height: 6px; background: var(--accent-soft); border-radius: 3px; overflow: hidden; }
+.prog-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.6s ease; }
+.prog-label { font-size: 13px; color: var(--muted); text-align: center; margin: 6px 0 0; }
+
+.setup-warn {
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 0 0 16px;
+}
+
+/* 완료 화면 */
+.done-card { text-align: center; }
+.done-title { font-size: 20px; font-weight: 700; color: var(--ok); margin: 0 0 6px; }
+.done-who { color: var(--muted); font-size: 14px; margin: 0; }
+.done-msg { font-size: 18px; margin: 10px 0 0; word-break: keep-all; }
+
+.status-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.class-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.class-card.full { border-color: var(--ok); background: var(--ok-soft); }
+.class-name { font-size: 13px; color: var(--muted); margin: 0; }
+.class-count { font-size: 20px; font-weight: 700; margin: 2px 0 0; }
+.class-miss { font-size: 13px; color: var(--danger); margin: 6px 0 0; word-break: keep-all; }
+.class-full { font-size: 13px; color: var(--ok); margin: 6px 0 0; }
+
+/* 덮어쓰기 확인 창 */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; z-index: 10;
+}
+.modal { background: #fff; border-radius: var(--radius); padding: 22px 20px; width: 100%; max-width: 400px; }
+.modal-title { font-size: 18px; font-weight: 700; margin: 0 0 4px; }
+.modal-text { color: var(--danger); font-size: 14px; margin: 0 0 14px; }
+.modal-lbl { font-size: 12px; color: var(--muted); margin: 8px 0 2px; }
+.modal-msg { background: var(--bg); border-radius: 8px; padding: 8px 12px; margin: 0; word-break: keep-all; }
+.modal-msg.old { text-decoration: line-through; color: var(--muted); }
+.modal-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+
+@media (max-width: 380px) {
+  .row { grid-template-columns: 1fr; }
+  .status-grid { grid-template-columns: 1fr; }
+}

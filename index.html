@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>졸업앨범 한마디</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- 입력 화면 -->
+    <section id="formScreen" class="card">
+      <p id="setupWarn" class="setup-warn" hidden>
+        [선생님 확인] js/config.js 의 GAS_URL이 아직 설정되지 않았어요.
+      </p>
+
+      <h1>졸업앨범 한마디</h1>
+      <p class="sub">앨범 속 내 이름 아래 들어갈 한 문장을 적어 주세요.</p>
+
+      <div class="row">
+        <label class="field field-id">
+          <span class="lbl">학번 (4자리)</span>
+          <input id="sid" type="text" inputmode="numeric" placeholder="3101" autocomplete="off">
+        </label>
+        <label class="field">
+          <span class="lbl">이름</span>
+          <input id="sname" type="text" placeholder="홍길동" autocomplete="off">
+        </label>
+      </div>
+      <p id="idErr" class="err"></p>
+
+      <label class="field">
+        <span class="lbl">한마디 <span id="msgCount" class="count">0 / 30</span></span>
+        <input id="smsg" type="text" placeholder="함께여서 행복했어, 고마워!" autocomplete="off">
+      </label>
+      <p id="msgErr" class="err"></p>
+
+      <div id="progWrap" class="prog" hidden>
+        <div class="prog-track"><div id="progFill" class="prog-fill"></div></div>
+        <p id="progLabel" class="prog-label"></p>
+      </div>
+
+      <button id="submitBtn" class="btn-primary">제출하기</button>
+      <p id="serverErr" class="err center"></p>
+    </section>
+
+    <!-- 제출 완료 + 현황 화면 -->
+    <section id="statusScreen" hidden>
+      <div class="card done-card">
+        <p id="doneTitle" class="done-title">제출 완료!</p>
+        <p id="doneWho" class="done-who"></p>
+        <p id="doneMsg" class="done-msg"></p>
+      </div>
+
+      <h2>반별 제출 현황</h2>
+      <div id="statusGrid" class="status-grid"></div>
+
+      <button id="againBtn" class="btn-ghost">처음 화면으로</button>
+    </section>
+  </main>
+
+  <!-- 덮어쓰기 확인 창 -->
+  <div id="confirmModal" class="modal-bg" hidden>
+    <div class="modal">
+      <p class="modal-title">이미 제출한 한마디가 있어요</p>
+      <p class="modal-text">새로 제출하면 기존 문구는 지워집니다.</p>
+      <p class="modal-lbl">기존 문구</p>
+      <p id="prevMsg" class="modal-msg old"></p>
+      <p class="modal-lbl">새 문구</p>
+      <p id="newMsg" class="modal-msg"></p>
+      <div class="modal-btns">
+        <button id="cancelBtn" class="btn-ghost">취소</button>
+        <button id="overwriteBtn" class="btn-danger">덮어쓰기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/submit.js"></script>
+</body>
+</html>
